@@ -20,4 +20,3 @@ EXPOSE 8000:8000
 # CMD ["python3", "/app/serving_loan_prediction_model/app/app.py"]
 
 # CMD ["uvicorn", "serving_loan_prediction_model.app.app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
- 

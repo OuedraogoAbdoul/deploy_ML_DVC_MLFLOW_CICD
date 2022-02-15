@@ -1,11 +1,20 @@
 stages:
   download:
     cmd: python raw_data/make_dataset.py --config=config/params.yaml
-    deps: 
+    deps:
       - raw_data/make_dataset.py
       - config/params.yaml
     outs:
       - raw_data/raw_data.csv
+
+  split_data:
+    cmd: python src/data_manager.py --config=config/params.yaml
+    deps:
+      - src/data_manager.py
+      - config/params.yaml
+    # outs:
+    #   - processed_data/x_train.csv
+
   # training:
   #   cmd: python src/models/train_model.py
   #   deps:

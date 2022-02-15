@@ -4,12 +4,21 @@ stages:
     cmd: python raw_data/make_dataset.py --config=config/params.yaml
     deps:
     - path: config/params.yaml
-      md5: ab806f8e39ea5e8b9b929a96ec744a92
-      size: 2519
+      md5: 40db31e7bd1c25c4d6b7f4582a134601
+      size: 2578
     - path: raw_data/make_dataset.py
-      md5: 5d6b8550888f37becc5bc61f654b25a9
-      size: 725
+      md5: f0ca034f20f02a2fe51909b0424381e5
+      size: 672
     outs:
     - path: raw_data/raw_data.csv
       md5: 5f5258746094e690252206f05063f8a6
       size: 4656272
+  split_data:
+    cmd: python src/data_manager.py --config=config/params.yaml
+    deps:
+    - path: config/params.yaml
+      md5: 40db31e7bd1c25c4d6b7f4582a134601
+      size: 2578
+    - path: src/data_manager.py
+      md5: c4aebd9cf677595812b557d94842847a
+      size: 1351

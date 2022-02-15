@@ -36,18 +36,18 @@ clean:
 	find . -type d -name "__pycache__" -delete
 
 ## Lint using flake8
-lint: 
-	flake8 raw_data/
-	flake8 src/
-	black src/
+lint: precommit
+	# flake8 raw_data/
+	# flake8 src/
 	isort src/
-	black src/
+	# black src/
 	mypy src/
 	pylint --disable=R,C ./src
-	
+
 precommit:
 	pre-commit run --all-files
-	
+
+
 
 
 

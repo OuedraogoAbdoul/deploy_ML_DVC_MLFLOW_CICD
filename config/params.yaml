@@ -10,11 +10,11 @@ data_source:
 
 
 split_data:
-  X_train_path: x_train.csv
-  y_train_path: y_train.csv
-  
-  X_test_path: x_test.csv
-  y_test_path: y_test.csv
+  X_train_path: processed_data/x_train.csv
+  y_train_path: processed_data/y_train.csv
+
+  X_test_path: processed_data/x_test.csv
+  y_test_path: processed_data/y_test.csv
   test_size: 0.2
 
 

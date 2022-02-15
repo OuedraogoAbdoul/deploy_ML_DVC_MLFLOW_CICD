@@ -1,5 +1,4 @@
 import pytest
-import os
 
 # from model_directory.config import config
 
@@ -11,4 +10,4 @@ def test_input_data():
 
 def test_hello_world():
     x = 3
-    assert(x + 2 == 5, "Passed test")
+    assert x + 2 == 5, "Passed test"
