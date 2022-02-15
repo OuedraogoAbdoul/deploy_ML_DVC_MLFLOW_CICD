@@ -1,0 +1,13 @@
+-r requirements.txt
+
+# testing requirements
+pytest
+requests
+pytest-cov
+
+# repo maintenance
+black
+flake8
+mypy
+isort
+pre-commit

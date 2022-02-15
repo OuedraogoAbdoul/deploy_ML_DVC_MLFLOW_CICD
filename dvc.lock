@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  download:
+    cmd: python raw_data/make_dataset.py --config=config/params.yaml
+    deps:
+    - path: config/params.yaml
+      md5: ab806f8e39ea5e8b9b929a96ec744a92
+      size: 2519
+    - path: raw_data/make_dataset.py
+      md5: 5d6b8550888f37becc5bc61f654b25a9
+      size: 725
+    outs:
+    - path: raw_data/raw_data.csv
+      md5: 5f5258746094e690252206f05063f8a6
+      size: 4656272
