@@ -1,5 +1,6 @@
 from unittest import result
 import joblib
+from matplotlib.pyplot import axis
 import pandas as pd
 import json
 import argparse
@@ -28,19 +29,28 @@ def make_prediction(input_data: pd.DataFrame) -> json:
     model_path = config_path.get("production").get("model_path")
     model_pipeline = joblib.load(os.path.join("saved_models", "best_model_v1.joblib"))
 
-    data = pd.read_csv("processed_data/x_test.csv").sample(1, random_state=2)
+    data = pd.read_csv("processed_data/x_test.csv").sample(1)
+    sample = pd.read_csv("processed_data/x_test.csv").head(10)
+
+    dataset = pd.concat([data, sample], axis=0)
 
     try:
         
-        prediction = model_pipeline.predict(data)
+        prediction = model_pipeline.predict(dataset)
+    
+
         prediction = {"predictions": prediction[0]}
     except:
-        prediction = "error encounter"
-    
-    print(prediction)
+        pass
+
+    if(1 in prediction):
+        prediction = {"predictions": 1}
+    else:
+        prediction = {"predictions": 0}
+
+    # print(prediction)
 
     return prediction
-
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
