@@ -7,12 +7,12 @@ stages:
       md5: 40db31e7bd1c25c4d6b7f4582a134601
       size: 2578
     - path: raw_data/make_dataset.py
-      md5: f0ca034f20f02a2fe51909b0424381e5
-      size: 672
+      md5: 966240e75bd9174da37dba3ca9dbe628
+      size: 1022
     outs:
     - path: raw_data/raw_data.csv
-      md5: 5f5258746094e690252206f05063f8a6
-      size: 4656272
+      md5: bfe0ababedd074a95c3a4d982ddf779c
+      size: 4607381
   split_data:
     cmd: python src/data_manager.py --config=config/params.yaml
     deps:
@@ -20,5 +20,5 @@ stages:
       md5: 40db31e7bd1c25c4d6b7f4582a134601
       size: 2578
     - path: src/data_manager.py
-      md5: c4aebd9cf677595812b557d94842847a
-      size: 1351
+      md5: c6772d801344e8dc8aeb2c5086ba9db0
+      size: 2482
