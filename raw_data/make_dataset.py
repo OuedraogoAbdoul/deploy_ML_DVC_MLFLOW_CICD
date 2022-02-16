@@ -1,5 +1,6 @@
 import argparse
 import json
+
 import pandas as pd
 import yaml
 
@@ -32,7 +33,7 @@ def download_data(config_path: str) -> pd.DataFrame:
     file_path = config_path["data_source"]["datasets_link"]
     df_data = pd.read_csv(file_path)
 
-    df_data.to_csv(config_path["data_source"]["raw_source"])
+    df_data.to_csv(config_path["data_source"]["raw_source"], index=False)
     return df_data
 
 

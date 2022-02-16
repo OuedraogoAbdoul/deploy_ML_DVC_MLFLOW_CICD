@@ -6,6 +6,7 @@ flake8
 isort
 mypy
 pre-commit
+pyflakes
 
 # testing requirements
 pytest

@@ -12,19 +12,18 @@ stages:
     deps:
       - src/data_manager.py
       - config/params.yaml
-    # outs:
-    #   - processed_data/x_train.csv
-
-  # training:
-  #   cmd: python src/models/train_model.py
-  #   deps:
-  #     - src/models/train_model.py
-  #     - params.yaml
-  #   params:
-  #     - estimators.SVM.params.random_state
-  #     # - passes
-  #   # outs:
-  #   #   - saved_models/best_model.joblib
+    outs:
+      - processed_data/x_train.csv
+      - processed_data/y_train.csv
+      - processed_data/x_test.csv
+      - processed_data/y_test.csv
+  training:
+    cmd: python src/train_pipeline.py --config=config/params.yaml
+    deps:
+      - src/train_pipeline.py
+      - config/params.yaml
+    outs:
+      - saved_models/best_model_v1.joblib
   # prediction:
   #   cmd: python src/models/predict_model.py
   #   deps:

@@ -1,8 +1,14 @@
 import argparse
-import pandas as pd
-from raw_data.make_dataset import read_params_file
+from operator import index
 
+import pandas as pd
+from sklearn import pipeline
+
+# Sklearn
 from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+
+from raw_data.make_dataset import read_params_file
 
 
 def load_data(config_path: str) -> pd.DataFrame:
@@ -47,13 +53,45 @@ def split_data(config_path: str) -> pd.DataFrame:
         X, y, test_size=test_size, random_state=random_state
     )
 
-    X_train.to_csv(config_path.get("split_data").get("X_train_path"))
-    y_train.to_csv(config_path.get("split_data").get("y_train_path"))
+    X_train.to_csv(config_path.get("split_data").get("X_train_path"), index= False)
+    y_train.to_csv(config_path.get("split_data").get("y_train_path"), index= False)
 
-    X_test.to_csv(config_path.get("split_data").get("X_test_path"))
-    y_test.to_csv(config_path.get("split_data").get("y_test_path"))
+
+    X_test.to_csv(config_path.get("split_data").get("X_test_path"), index= False)
+    y_test.to_csv(config_path.get("split_data").get("y_test_path"), index= False)
 
     return X_train, X_test, y_train, y_test
+
+
+def save_pipeline(config_path: str) -> Pipeline:
+    """Save model pipeline after training
+
+    Args:
+        config_path (str): yaml file
+
+    Returns:
+        pipeline: sklearn pipeline
+    """
+
+
+    model_pipeline = Pipeline()
+
+    return model_pipeline
+
+
+def load_pipeline(config_path: str) -> Pipeline:
+    """Load model pipeline for prediction
+
+    Args:
+        config_path (str): yaml file
+
+    Returns:
+        pipeline: sklearn pipeline
+    """
+
+    model_pipeline = pipeline()
+
+    return model_pipeline
 
 
 if __name__ == "__main__":
