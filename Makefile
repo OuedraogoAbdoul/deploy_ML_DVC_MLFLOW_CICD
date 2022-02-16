@@ -36,20 +36,15 @@ clean:
 	find . -type d -name "__pycache__" -delete
 
 ## Lint using flake8
-lint: 
-	flake8 raw_data/
-	flake8 src/
-	black src/
-	isort src/
-	black src/
+lint: clean precommit
+	isort -rc -sl src/
+	autoflake --remove-all-unused-imports -i -r src/
+	isort -rc -m 3 src/
 	mypy src/
 	pylint --disable=R,C ./src
-	
+
 precommit:
 	pre-commit run --all-files
-	
-
-
 
 ## docker build image
 build_docker_image:
@@ -60,7 +55,7 @@ build_docker_image:
 
 
 ## Test python environment is setup correctly
-test:
+test: precommit
 	pytest -vv --cov-report term-missing --cov=app tests/*.py
 	# pytest -vv --cov-report term-missing --cov=app tests/test_data.py
 
