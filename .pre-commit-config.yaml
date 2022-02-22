@@ -12,7 +12,7 @@ repos:
     -   id: check-merge-conflict
     -   id: file-contents-sorter
     -   id: name-tests-test
-    -   id: pretty-format-json
+    # -   id: pretty-format-json
     -   id: requirements-txt-fixer
 
 -   repo: https://github.com/PyCQA/flake8
