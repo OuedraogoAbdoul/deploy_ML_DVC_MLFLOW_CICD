@@ -1,0 +1,4 @@
+artifact_location: file:///home/main/Desktop/Gitrepos/deploy_ML_DVC_MLFLOW_CICD/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: Baseline_model

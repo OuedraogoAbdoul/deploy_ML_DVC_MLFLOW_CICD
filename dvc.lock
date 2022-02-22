@@ -42,9 +42,9 @@ stages:
       md5: da7a6efd9e25fc4b1dd578846f031d39
       size: 3112
     - path: src/train_pipeline.py
-      md5: 13975461442116019d09a2994c674d3e
-      size: 2533
+      md5: 6511f8c595e36b652d1169d1411ed2fa
+      size: 3929
     outs:
     - path: saved_models/best_model_v1.joblib
-      md5: 1b3cfe783a82e4177aaa376c7171d86e
-      size: 6767071
+      md5: 054c48fdccb9488fe282b927310056e1
+      size: 6768896

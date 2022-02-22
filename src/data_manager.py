@@ -1,5 +1,4 @@
 import argparse
-from operator import index
 
 import pandas as pd
 from sklearn import pipeline
@@ -53,12 +52,11 @@ def split_data(config_path: str) -> pd.DataFrame:
         X, y, test_size=test_size, random_state=random_state
     )
 
-    X_train.to_csv(config_path.get("split_data").get("X_train_path"), index= False)
-    y_train.to_csv(config_path.get("split_data").get("y_train_path"), index= False)
+    X_train.to_csv(config_path.get("split_data").get("X_train_path"), index=False)
+    y_train.to_csv(config_path.get("split_data").get("y_train_path"), index=False)
 
-
-    X_test.to_csv(config_path.get("split_data").get("X_test_path"), index= False)
-    y_test.to_csv(config_path.get("split_data").get("y_test_path"), index= False)
+    X_test.to_csv(config_path.get("split_data").get("X_test_path"), index=False)
+    y_test.to_csv(config_path.get("split_data").get("y_test_path"), index=False)
 
     return X_train, X_test, y_train, y_test
 
@@ -72,7 +70,6 @@ def save_pipeline(config_path: str) -> Pipeline:
     Returns:
         pipeline: sklearn pipeline
     """
-
 
     model_pipeline = Pipeline()
 

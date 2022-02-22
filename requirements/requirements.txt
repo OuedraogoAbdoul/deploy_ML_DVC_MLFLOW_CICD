@@ -12,6 +12,7 @@ imblearn
 joblib == 1.1.0
 jupyter
 matplotlib == 3.5.1
+mlflow
 notebook == 6.4.8
 numpy == 1.22.1
 pandas == 1.4.0
