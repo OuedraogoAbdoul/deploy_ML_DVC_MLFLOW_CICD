@@ -1,16 +1,17 @@
+import argparse
+
 from category_encoders import TargetEncoder
 from imblearn.pipeline import make_pipeline
-from raw_data.make_dataset import read_params_file
-
-import argparse
 from sklearn import pipeline
 from sklearn.svm import SVC
 
 import preprocessor as pp
+from raw_data.make_dataset import read_params_file
 
 
 def run_pipeline(config_path: str) -> pipeline:
-    config_path = read_params_file(config_path)
+
+    # print(config_path)
 
     var = config_path.get("categorical_vars").get("earliest_cr_line")
     svc = SVC()

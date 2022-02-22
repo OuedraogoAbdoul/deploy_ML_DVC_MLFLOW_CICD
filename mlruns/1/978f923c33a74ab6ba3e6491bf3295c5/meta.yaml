@@ -1,0 +1,15 @@
+artifact_uri: file:///home/main/Desktop/Gitrepos/deploy_ML_DVC_MLFLOW_CICD/mlruns/1/978f923c33a74ab6ba3e6491bf3295c5/artifacts
+end_time: 1645569230541
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 978f923c33a74ab6ba3e6491bf3295c5
+run_uuid: 978f923c33a74ab6ba3e6491bf3295c5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1645569230536
+status: 4
+tags: []
+user_id: main

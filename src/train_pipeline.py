@@ -1,19 +1,23 @@
-import pipeline as model_pipeline
 import argparse
-import pandas as pd
-from raw_data.make_dataset import read_params_file
-from monitor.monitor import (
-    detect_dataset_drift_on_premise,
-    evaluate_model_drift_on_premise,
-)
-import joblib
 import os
+
+import joblib
 import mlflow
 import mlflow.sklearn
-from sklearn.metrics import balanced_accuracy_score
-from sklearn.metrics import f1_score
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
+import pandas as pd
+from sklearn.metrics import (
+    balanced_accuracy_score,
+    f1_score,
+    precision_score,
+    recall_score
+)
+
+import pipeline as model_pipeline
+from monitor.monitor import (
+    detect_dataset_drift_on_premise,
+    evaluate_model_drift_on_premise
+)
+from raw_data.make_dataset import read_params_file
 
 
 def eval_metrics(actual, pred):
@@ -86,18 +90,11 @@ def run_training(config_path) -> None:
             y_test, X_test_tranformed["prediction"]
         )
 
-        # print("  balanced_accuracy: %s" % balanced_accuracy)
+        print("  balanced_accuracy: %s" % balanced_accuracy)
         print("  f1_score_: %s" % f1_score_)
         print("  precision_score_: %s" % precision_score_)
         print("  recall_score_: %s" % recall_score_)
 
-        # mlflow.log_param("alpha", alpha)
-        # mlflow.log_param("l1_ratio", l1_ratio)
-        # mlflow.log_metric("rmse", rmse)
-        # mlflow.log_metric("r2", r2)
-        # mlflow.log_metric("mae", mae)
-
-        # mlflow.sklearn.log_model(lr, "model")
 
     X_train_transformed.to_csv(
         config_path.get("split_data").get("reference_xtrain"), index=False
@@ -118,4 +115,4 @@ if __name__ == "__main__":
     args.add_argument("--config", default="params.yaml")
     parse_args = args.parse_args()
 
-    model_pipeline_result = run_training(config_path=parse_args.config)
+    run_training(config_path=parse_args.config)

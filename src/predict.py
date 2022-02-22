@@ -1,10 +1,10 @@
-import pandas as pd
-import json
 import argparse
-import joblib
-
+import json
 # from raw_data.make_dataset import read_params_file
 import os
+
+import joblib
+import pandas as pd
 
 
 def make_prediction(input_data: pd.DataFrame) -> json:

@@ -38,7 +38,7 @@ clean:
 ## Lint using flake8
 lint: clean precommit
 	isort -rc -sl src/
-	autoflake --remove-all-unused-imports -i -r src/
+	# autoflake --remove-all-unused-imports -i -r src
 	isort -rc -m 3 src/
 	mypy src/
 	pylint --disable=R,C ./src
