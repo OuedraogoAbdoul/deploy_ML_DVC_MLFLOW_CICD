@@ -48,15 +48,15 @@ precommit:
 
 ## docker build image
 build_docker_image:
-	docker build -t model .
+	docker build . -f docker/app_dev/Dockerfile -t model
 
 
 ## Download Data from remote directory
 
 
 ## Test python environment is setup correctly
-test: precommit
-	pytest -vv --cov-report term-missing --cov=app tests/*.py
+pre_build: clean lint precommit
+	pytest tests/*.py
 	# pytest -vv --cov-report term-missing --cov=app tests/test_data.py
 
 
@@ -66,8 +66,9 @@ preprocess:
 
 train_model:
 	# dvc repro
-	python src/models/pipeline.py
-	python src/models/train_model.py
+	python src/pipeline.py --config=config/params.yaml
+	python src/train_pipeline.py --config=config/params.yaml
+
 predict:
 	# dvc repro
 	python src/models/predict_model.py

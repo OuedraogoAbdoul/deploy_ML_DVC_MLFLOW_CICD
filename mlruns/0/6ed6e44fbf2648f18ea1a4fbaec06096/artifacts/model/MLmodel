@@ -1,0 +1,31 @@
+artifact_path: model
+flavors:
+  python_function:
+    env: conda.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    python_version: 3.9.7
+  sklearn:
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.0.2
+model_uuid: 2748fda6d2a44d56bdff500f87984316
+run_id: 6ed6e44fbf2648f18ea1a4fbaec06096
+signature:
+  inputs: '[{"name": "Id", "type": "double"}, {"name": "emp_title", "type": "double"},
+    {"name": "emp_length", "type": "double"}, {"name": "home_ownership", "type": "double"},
+    {"name": "annual_inc", "type": "double"}, {"name": "verification_status", "type":
+    "double"}, {"name": "pymnt_plan", "type": "double"}, {"name": "Notes", "type":
+    "double"}, {"name": "purpose_cat", "type": "double"}, {"name": "purpose", "type":
+    "double"}, {"name": "zip_code", "type": "double"}, {"name": "addr_state", "type":
+    "double"}, {"name": "debt_to_income", "type": "double"}, {"name": "delinq_2yrs",
+    "type": "double"}, {"name": "earliest_cr_line", "type": "double"}, {"name": "inq_last_6mths",
+    "type": "double"}, {"name": "mths_since_last_delinq", "type": "double"}, {"name":
+    "mths_since_last_record", "type": "double"}, {"name": "open_acc", "type": "double"},
+    {"name": "pub_rec", "type": "double"}, {"name": "revol_bal", "type": "double"},
+    {"name": "revol_util", "type": "double"}, {"name": "total_acc", "type": "double"},
+    {"name": "initial_list_status", "type": "double"}, {"name": "collections_12_mths_ex_med",
+    "type": "double"}, {"name": "mths_since_last_major_derog", "type": "double"},
+    {"name": "policy_code", "type": "double"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+utc_time_created: '2022-02-22 18:31:15.252300'

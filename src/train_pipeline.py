@@ -1,9 +1,27 @@
-import pipeline as pipeline
+import pipeline as model_pipeline
 import argparse
 import pandas as pd
 from raw_data.make_dataset import read_params_file
+from monitor.monitor import (
+    detect_dataset_drift_on_premise,
+    evaluate_model_drift_on_premise,
+)
 import joblib
 import os
+import mlflow
+import mlflow.sklearn
+from sklearn.metrics import balanced_accuracy_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+
+
+def eval_metrics(actual, pred):
+    balanced_accuracy = balanced_accuracy_score(actual, pred)
+    f1_score_ = f1_score(actual, pred)
+    precision_score_ = precision_score(actual, pred)
+    recall_score_ = recall_score(actual, pred)
+    return balanced_accuracy, f1_score_, precision_score_, recall_score_
 
 
 def read_file(config_path: str) -> pd.DataFrame:
@@ -33,20 +51,66 @@ def run_training(config_path) -> None:
 
     model_name = model_name + "_" + model_version + model_format
 
-    model_path = os.path.join(model_dir, model_name)
+    # model_path = os.path.join(model_dir, model_name)
 
     # # divide train and test
     X_train = read_file(config_path.get("split_data").get("X_train_path"))
     y_train = read_file(config_path.get("split_data").get("y_train_path"))
 
-    # transform
-    loan_pipe = pipeline.run_pipeline(config_path)
-    loan_pipe.fit(X_train, y_train)
+    X_test = read_file(config_path.get("split_data").get("X_test_path"))
+    y_test = read_file(config_path.get("split_data").get("y_test_path"))
 
-    # save model
-    # _logger.info(f"saving model version: {_version}")
-    joblib.dump(loan_pipe, os.path.join(model_dir, model_name))
-    print(type(loan_pipe))
+    mlflow.set_experiment("Baseline_model")
+
+    # enable autologging
+    mlflow.sklearn.autolog()
+
+    with mlflow.start_run() as run:
+        # transform
+        loan_pipe = model_pipeline.run_pipeline(config_path)
+        loan_pipe.fit(X_train, y_train["is_bad"])
+        print("Logged data and model in run: {}".format(run.info.run_id))
+
+        # save model
+        # _logger.info(f"saving model version: {_version}")
+        joblib.dump(loan_pipe, os.path.join(model_dir, model_name))
+
+        # data saved for model and data drift testing
+        X_train_transformed = loan_pipe[:-1].transform(X_train)
+        X_test_tranformed = loan_pipe[:-1].transform(X_test)
+
+        X_train_transformed["prediction"] = loan_pipe.predict(X_train)
+        X_test_tranformed["prediction"] = loan_pipe.predict(X_test)
+
+        balanced_accuracy, f1_score_, precision_score_, recall_score_ = eval_metrics(
+            y_test, X_test_tranformed["prediction"]
+        )
+
+        # print("  balanced_accuracy: %s" % balanced_accuracy)
+        print("  f1_score_: %s" % f1_score_)
+        print("  precision_score_: %s" % precision_score_)
+        print("  recall_score_: %s" % recall_score_)
+
+        # mlflow.log_param("alpha", alpha)
+        # mlflow.log_param("l1_ratio", l1_ratio)
+        # mlflow.log_metric("rmse", rmse)
+        # mlflow.log_metric("r2", r2)
+        # mlflow.log_metric("mae", mae)
+
+        # mlflow.sklearn.log_model(lr, "model")
+
+    X_train_transformed.to_csv(
+        config_path.get("split_data").get("reference_xtrain"), index=False
+    )
+    y_train.to_csv(config_path.get("split_data").get("reference_ytrain"), index=False)
+
+    X_test_tranformed.to_csv(
+        config_path.get("split_data").get("reference_xtest"), index=False
+    )
+    y_test.to_csv(config_path.get("split_data").get("reference_ytest"), index=False)
+
+    detect_dataset_drift_on_premise(config_path)
+    evaluate_model_drift_on_premise(config_path)
 
 
 if __name__ == "__main__":
@@ -54,4 +118,4 @@ if __name__ == "__main__":
     args.add_argument("--config", default="params.yaml")
     parse_args = args.parse_args()
 
-    pipeline = run_training(config_path=parse_args.config)
+    model_pipeline_result = run_training(config_path=parse_args.config)
