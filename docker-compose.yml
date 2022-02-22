@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  jupyter:
+    user: root
+    build:
+      context: .
+      dockerfile: ./docker/jupyter/Dockerfile

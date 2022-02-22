@@ -4,8 +4,8 @@ stages:
     cmd: python raw_data/make_dataset.py --config=config/params.yaml
     deps:
     - path: config/params.yaml
-      md5: eecabc0683a26ea143e61970080ef372
-      size: 2695
+      md5: da7a6efd9e25fc4b1dd578846f031d39
+      size: 3112
     - path: raw_data/make_dataset.py
       md5: b827d965ce8467f50b188b5f89510470
       size: 1021
@@ -17,8 +17,8 @@ stages:
     cmd: python src/data_manager.py --config=config/params.yaml
     deps:
     - path: config/params.yaml
-      md5: eecabc0683a26ea143e61970080ef372
-      size: 2695
+      md5: da7a6efd9e25fc4b1dd578846f031d39
+      size: 3112
     - path: src/data_manager.py
       md5: a41e4be39407773fab8bca1ea1c37a26
       size: 2484
@@ -39,12 +39,12 @@ stages:
     cmd: python src/train_pipeline.py --config=config/params.yaml
     deps:
     - path: config/params.yaml
-      md5: eecabc0683a26ea143e61970080ef372
-      size: 2695
+      md5: da7a6efd9e25fc4b1dd578846f031d39
+      size: 3112
     - path: src/train_pipeline.py
-      md5: 471cd436b97f8f58a83c7bf50e8d2a8f
-      size: 1518
+      md5: 13975461442116019d09a2994c674d3e
+      size: 2533
     outs:
     - path: saved_models/best_model_v1.joblib
-      md5: fe504fd9dd65b52c7c849467a157fa37
-      size: 6768844
+      md5: 1b3cfe783a82e4177aaa376c7171d86e
+      size: 6767071
