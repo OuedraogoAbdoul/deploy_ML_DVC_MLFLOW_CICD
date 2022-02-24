@@ -34,14 +34,37 @@ Please make sure to update tests as appropriate.
 
 ## Reports
 
-### Confusion metric
+### Data drift
 
-![alt text](mlruns/1/b00e034957b14c25b85b88893ca48967/artifacts/training_confusion_matrix.png)
+![alt text](reports/Screenshot from 2022-02-24 11-54-30.png)
+
+### Target drift
+![alt text](reports/Screenshot from 2022-02-24 11-56-15.png)
+
+''
+![alt text](reports/Screenshot from 2022-02-24 11-57-00.png)
+
+'Target drift by features'
+![alt text](reports/Screenshot from 2022-02-24 11-57-45.png)
+
+
+
+### Drift by features
+![alt text](reports/Screenshot from 2022-02-24 11-56-38.png)
 
 ## Metrics
 
-![alt text](http://url/to/img.png)
+### Confusion
 
+![alt text](mlruns/1/b00e034957b14c25b85b88893ca48967/artifacts/training_confusion_matrix.png)
+
+### Precision and Recall
+
+![alt text](mlruns/1/b00e034957b14c25b85b88893ca48967/artifacts/training_precision_recall_curve.png)
+
+### ROC AUC
+
+![alt text](mlruns/1/b00e034957b14c25b85b88893ca48967/artifacts/training_roc_curve.png)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
