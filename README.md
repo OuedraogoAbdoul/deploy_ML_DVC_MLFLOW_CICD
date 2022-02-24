@@ -50,7 +50,7 @@ Please make sure to update tests as appropriate.
 
 
 ### Drift by features
-![alt text](reports/Screenshot from 2022-02-24 11-56-38.png)
+![alt text](reports/Screenshot_from_2022_02_24_11_56_38.png)
 
 ## Metrics
 
