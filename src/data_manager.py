@@ -1,12 +1,14 @@
 import argparse
 
 import pandas as pd
-from sklearn import pipeline
+
 # Sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
 from raw_data.make_dataset import read_params_file
+
+# from sklearn import pipeline
 
 
 def load_data(config_path: str) -> pd.DataFrame:
@@ -75,19 +77,19 @@ def save_pipeline(config_path: str) -> Pipeline:
     return model_pipeline
 
 
-def load_pipeline(config_path: str) -> Pipeline:
-    """Load model pipeline for prediction
+# def load_pipeline(config_path: str) -> Pipeline:
+#     """Load model pipeline for prediction
 
-    Args:
-        config_path (str): yaml file
+#     Args:
+#         config_path (str): yaml file
 
-    Returns:
-        pipeline: sklearn pipeline
-    """
+#     Returns:
+#         pipeline: sklearn pipeline
+#     """
 
-    model_pipeline = pipeline()
+#     model_pipeline = pipeline()
 
-    return model_pipeline
+#     return model_pipeline
 
 
 if __name__ == "__main__":

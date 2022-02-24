@@ -5,18 +5,14 @@ import joblib
 import mlflow
 import mlflow.sklearn
 import pandas as pd
-from sklearn.metrics import (
-    balanced_accuracy_score,
-    f1_score,
-    precision_score,
-    recall_score
-)
+from sklearn.metrics import balanced_accuracy_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
 
 import pipeline as model_pipeline
-from monitor.monitor import (
-    detect_dataset_drift_on_premise,
-    evaluate_model_drift_on_premise
-)
+from monitor.monitor import detect_dataset_drift_on_premise
+from monitor.monitor import evaluate_model_drift_on_premise
 from raw_data.make_dataset import read_params_file
 
 
@@ -94,7 +90,6 @@ def run_training(config_path) -> None:
         print("  f1_score_: %s" % f1_score_)
         print("  precision_score_: %s" % precision_score_)
         print("  recall_score_: %s" % recall_score_)
-
 
     X_train_transformed.to_csv(
         config_path.get("split_data").get("reference_xtrain"), index=False

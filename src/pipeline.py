@@ -6,7 +6,8 @@ from sklearn import pipeline
 from sklearn.svm import SVC
 
 import preprocessor as pp
-from raw_data.make_dataset import read_params_file
+
+# from raw_data.make_dataset import read_params_file
 
 
 def run_pipeline(config_path: str) -> pipeline:

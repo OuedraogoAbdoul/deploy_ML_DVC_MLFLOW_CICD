@@ -39,9 +39,9 @@ clean:
 lint: clean precommit
 	isort -rc -sl src/
 	# autoflake --remove-all-unused-imports -i -r src
-	isort -rc -m 3 src/
-	mypy src/
-	pylint --disable=R,C ./src
+	# isort -rc -m 3 src/
+	# mypy src/
+	# pylint --disable=R,C ./src
 
 precommit:
 	pre-commit run --all-files
@@ -74,5 +74,5 @@ predict:
 	python src/models/predict_model.py
 
 
-hello:
+build: build_docker_image
 	docker run --rm -d -v $(PWD):/app -p 8000:8000 model

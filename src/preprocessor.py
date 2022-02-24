@@ -1,11 +1,15 @@
 import numpy as np
 import pandas as pd
+
 # imblearn
-from imblearn.combine import SMOTEENN, SMOTETomek
+from imblearn.combine import SMOTEENN
+from imblearn.combine import SMOTETomek
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import TomekLinks
+
 # sklearn
-from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.base import BaseEstimator
+from sklearn.base import TransformerMixin
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
 
@@ -119,7 +123,7 @@ class OverUnderSAMPLE(SMOTEENN, SMOTETomek, SMOTE):
 
         sm = SMOTE(sampling_strategy="auto", random_state=42, k_neighbors=5, n_jobs=4)
 
-        X_sm, y_sm = sm.fit_resample(X, self.y)
+        _, _ = sm.fit_resample(X, self.y)
 
         tl = TomekLinks(sampling_strategy="all", n_jobs=4)
 
