@@ -36,16 +36,16 @@ Please make sure to update tests as appropriate.
 
 ### Data drift
 
-![alt text](reports/Screenshot from 2022-02-24 11-54-30.png)
+![alt text](reports/Screenshot_from_2022_02_24_11_54_30.png)
 
 ### Target drift
-![alt text](reports/Screenshot from 2022-02-24 11-56-15.png)
+![alt text](reports/Screenshot_from_2022_02_24_11_56_15.png)
 
 ''
-![alt text](reports/Screenshot from 2022-02-24 11-57-00.png)
+![alt text](reports/Screenshot_from_2022_02_24_11_57_00.png)
 
 'Target drift by features'
-![alt text](reports/Screenshot from 2022-02-24 11-57-45.png)
+![alt text](reports/Screenshot_from_2022_02_24_11_57_45.png)
 
 
 
