@@ -1,3 +1,5 @@
+[![Makefile CI](https://github.com/OuedraogoAbdoul/deploy_ML_DVC_MLFLOW_CICD/actions/workflows/main.yml/badge.svg)](https://github.com/OuedraogoAbdoul/deploy_ML_DVC_MLFLOW_CICD/actions/workflows/main.yml)
+
 # Machine learning End-End
 
 This project highlight an end to end machine learning development including data, target and model drift monitoring. 
