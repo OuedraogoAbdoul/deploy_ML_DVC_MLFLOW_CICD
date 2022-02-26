@@ -18,8 +18,8 @@ jobs:
       run: make requirements
   
     - name: Zip bundle
-      run:
-        cd reports
+      run: |
+          cd src
           zip -r ../${{ github.sha }}.zip .
     - name: Archive artifact
       uses: actions/upload-artifact@v2
