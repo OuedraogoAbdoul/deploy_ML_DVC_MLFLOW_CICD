@@ -14,14 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-#     - name: configure
-#       run: ./configure
-
     - name: Install dependencies
       run: make requirements
-
-    - name: Run pre_build
-      run: make pre_build
-
-    # - name: Run distcheck
-    #   run: make distcheck
+  
+    - name: Zip bundle
+      run:
+          zip -r ../${{ github.sha }}.zip .
+    - name: Archive artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: zipped-bundle
+        path: ${{ github.sha }}.zip
