@@ -19,6 +19,7 @@ jobs:
   
     - name: Zip bundle
       run:
+        cd reports
           zip -r ../${{ github.sha }}.zip .
     - name: Archive artifact
       uses: actions/upload-artifact@v2
